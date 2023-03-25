@@ -1,11 +1,22 @@
-function GalleryItem(){
+import { useState } from 'react';
+
+function GalleryItem({src}){
     console.log('Inside GalleryItem()')
 
+    const [showDescipt, setPhoto] = useState(true);
+
+    const handleClick = () => {
+        setPhoto(!showDescipt)
+
+        
+    }
+
 return(<>
-    <img src="images/goat_small.jpg"/> <br></br>
-    <img src="images/bike.jpg" width='130px' height='auto'/><br></br>
-    <img src="images/water.jpg" width='201px' height='auto'/>
-    </>
+    {showDescipt ? 
+        <img onClick={handleClick} src={src.path}/>
+        :
+        <p onClick={handleClick}> {src.description} </p>}
+        </>  
     
 )
 }
