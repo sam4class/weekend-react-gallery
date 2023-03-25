@@ -27,19 +27,7 @@ function App() {
     getGallery()
   }, []);
 
-  const putLikesButton = () => {
-    console.log('PUTting likes');
-
-    axios.put('/gallery/like/:id')
-    .then(result => {
-      setLikesNum(result.data)
-    }).catch((err) => {
-      alert('Error in PUT', err);
-    })
-  }
-
-
-
+  
     return (
       <div className="App">
         <header className="App-header">
@@ -47,7 +35,7 @@ function App() {
         </header>
         <p>Gallery goes here</p>
 
-        <GalleryList picture={gallery} />
+        <GalleryList picture={gallery} getGallery={getGallery}/>
         
        
       </div>

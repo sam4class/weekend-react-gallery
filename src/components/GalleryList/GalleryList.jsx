@@ -1,49 +1,31 @@
 import GalleryItem from '../GalleryItem/GalleryItem'
-import { useState } from 'react';
 import axios from 'axios';
-//import LikesButton from '../LikesButton/LikesButton';
 
-function GalleryList({picture}){
+function GalleryList({picture, getGallery}){
     console.log('Inside GalleryList()', picture);
 
-    const [likesNum, setLikesNum] = useState(0);
-    let count =0;
+    const putLikesButton = (id) => {
+        console.log('PUTting likes', id);
 
-    function handleClick(){
-        event.preventDefault();
-        console.log('Inside handleClick()');
-
-        count ++;
-        count = likesNum;
-        return likesNum;
+      axios.put(`/gallery/like/${id}`, id)
+      .then(response => {
+        console.log(response.data);
+        getGallery()
+      })
+      .catch((err) => {
+        alert('Error in PUT', err);
+      })
     }
-
-    const putLikesButton = (id, likesNum) => {
-        console.log('PUTting likes');
-    
-        axios({
-            method: 'POST',
-            url: '/gallery/like/${id}',
-            data:{
-                id: id,
-                likes: {likesNum}
-            }
-        }).then(result => {
-          props.setLikesNum(result.data);
-        }).catch((err) => {
-          alert('Error in PUT', err);
-        })
-      }
-    
     
     return(<>
         <div>
         {picture.map(pic => (<>
             <GalleryItem key={pic.id} src={pic}/>
-        <br></br>
-            <button onClick={handleClick}>Click To Like This Photo</button>
             <br></br>
-            <p onChange={(event) => setLikesNum(event.target.value)} value={likesNum}>{pic.likes} people who love this!</p>
+            <button onClick={() => putLikesButton(pic.id)}>Click To Like</button>
+            <br></br>
+            <p>{pic.likes} people who liked this!</p>
+
             </>
         ))}
         </div>

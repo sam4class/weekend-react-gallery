@@ -13,9 +13,9 @@ function GalleryItem({src}){
 
 return(<>
     {showDescipt ? 
-        <img onClick={handleClick} src={src.path}/>
+        <img width="100" height="100" onClick={handleClick} src={src.path} likes={src.likes}/>
         :
-        <p onClick={handleClick}> {src.description} </p>}
+        <p onClick={handleClick}> {src.description}</p>}
         </>  
     
 )
