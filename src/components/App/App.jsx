@@ -2,44 +2,42 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import GalleryItem from '../GalleryItem/GalleryItem.jsx';
 import GalleryList from '../GalleryList/GalleryList.jsx';
-import LikesButton from '../LikesButton/LikesButton';
 
 
 function App() {
 
+  //making a State for the gallery and then a place to put it
   const [gallery, setGallery] = useState([]);
-  const [likesNum, setLikesNum] = useState(0);
 
+  //this is the GET to get the gallery from the server side
   const getGallery = () => {
-    console.log('GETting Gallery');
-
+    // console.log('GETting Gallery');
     axios.get('/gallery')
-    .then(result => {
-      setGallery(result.data)
-    }).catch((err) => {
-      alert('Error in GET');
-    })
+      .then(result => {
+        setGallery(result.data)
+      }).catch((err) => {
+        alert('Error in GET');
+      })
   }
-
+  //this is updating state based on previous state from an Effect
   useEffect(() => {
     getGallery()
   }, []);
 
-  
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">My Gallery</h1>
-        </header>
-        <p>Gallery goes here</p>
-
-        <GalleryList picture={gallery} getGallery={getGallery}/>
-        
-       
-      </div>
-    );
+  //this is the render on the DOM, giving a heading and the another conponent that will give us the images 
+  //within GalleryList there are two children: 
+  //1, pictures that grabs the pictures 
+  //2, that gives us access to the getGallery() that we need to place in our PUT aka Update 
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">My Gallery</h1>
+      </header>
+      <p>Gallery goes here</p>
+      <GalleryList picture={gallery} getGallery={getGallery} />
+    </div>
+  );
 }
 
 export default App;
