@@ -1,11 +1,12 @@
 import GalleryItem from '../GalleryItem/GalleryItem'
 import axios from 'axios';
 
-//place in 'picture' and 'getGallery' as the keys from App to handshake with this component
-function GalleryList({ picture, getGallery }) {
-    // console.log('Inside GalleryList()', picture);
+function GalleryList({picture, getGallery}){
+    console.log('Inside GalleryList()', picture);
+
+    //PUT
     const putLikesButton = (id) => {
-        console.log('PUTting likes', id);
+    //console.log('PUTting likes', id);
 
         //passing the url and also what you want to grab
         axios.put(`/gallery/like/${id}`, id)

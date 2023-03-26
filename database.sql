@@ -2,8 +2,8 @@ DATABASE "react_gallery"
 
 CREATE TABLE gallery (
     "id" SERIAL PRIMARY KEY,
-    "path" VARCHAR(300) NOT NULL,
-    "description" VARCHAR(200) NOT NULL,
+    "path" VARCHAR(300),
+    "description" VARCHAR(200),
     "likes" INTEGER
 );
 
