@@ -52,6 +52,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">My Gallery</h1>
+          <p>Click the Photo and Read a Description</p>
         </header>
         <p>Gallery goes here</p>
 

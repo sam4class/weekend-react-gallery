@@ -19,8 +19,8 @@ function GalleryForm({newPic}){
         console.log('pic info', newPictureForm)
         newPic(newPictureForm);
 
-        // setNewPicture('');
-        // setNewDiscription('');
+        setNewPicture('');
+        setNewDiscription('');
     }
 
     return(<>
@@ -30,9 +30,9 @@ function GalleryForm({newPic}){
             Picture:
         </label>
         <input type='text' value={newPicture} onChange={(event) => setNewPicture(event.target.value)}/>
-
+        
         <label>
-            Discription:
+            Description:
         </label>
         <input type='text' value={newDiscription} onChange={(event) => setNewDiscription(event.target.value)}/>
 

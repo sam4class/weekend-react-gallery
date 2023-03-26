@@ -23,7 +23,7 @@ function GalleryList({picture, getGallery}){
         //it's also adding a button and the sentence of clicked likes
         //no state is used in this componet because nothing needs to be saved at state, it can just be shown on the DOM
     return (<>
-        <div>
+        <div id="picList">
             {picture.map(pic => (<>
                 <GalleryItem key={pic.id} src={pic} />
                 <br></br>
