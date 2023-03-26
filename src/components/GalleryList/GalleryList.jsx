@@ -4,12 +4,13 @@ import axios from 'axios';
 function GalleryList({picture, getGallery}){
     console.log('Inside GalleryList()', picture);
 
+    //PUT
     const putLikesButton = (id) => {
-        console.log('PUTting likes', id);
+    //console.log('PUTting likes', id);
 
       axios.put(`/gallery/like/${id}`, id)
       .then(response => {
-        console.log(response.data);
+        //console.log(response.data);
         getGallery()
       })
       .catch((err) => {

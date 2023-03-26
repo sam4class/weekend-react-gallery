@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 function GalleryItem({src}){
-    console.log('Inside GalleryItem()')
+    //console.log('Inside GalleryItem()')
 
     const [showDescipt, setPhoto] = useState(true);
 
