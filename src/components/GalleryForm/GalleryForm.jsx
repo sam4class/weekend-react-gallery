@@ -4,7 +4,7 @@ function GalleryForm({newPic}){
     console.log('Inside GalleryForm()');
 
     const [newPicture, setNewPicture] = useState('');
-    const [newDiscription, setNewDiscription] = useState('');
+    const [newDescription, setNewDescription] = useState('');
 
 
     function handleSubmit(){
@@ -13,14 +13,14 @@ function GalleryForm({newPic}){
 
         const newPictureForm = {
             path: newPicture,
-            description: newDiscription,
+            description: newDescription,
             likes: 0
         }
         console.log('pic info', newPictureForm)
         newPic(newPictureForm);
 
         setNewPicture('');
-        setNewDiscription('');
+        setNewDescription('');
     }
 
     return(<>
@@ -34,7 +34,7 @@ function GalleryForm({newPic}){
         <label>
             Description:
         </label>
-        <input type='text' value={newDiscription} onChange={(event) => setNewDiscription(event.target.value)}/>
+        <input type='text' value={newDescription} onChange={(event) => setNewDescription(event.target.value)}/>
 
         <button type="submit">Submit</button>
     </form>

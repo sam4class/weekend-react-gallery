@@ -10,7 +10,7 @@ import GalleryForm from '../GalleryForm/GalleryForm.jsx';
 function App() {
   //making a State for the gallery and then a place to put it
   const [gallery, setGallery] = useState([]);
-  const [newDiscription, setNewDiscription] = useState('');
+  // const [newDescription, setNewDescription] = useState('');
 
   //POST
   const addNewPicture = (newPictureForm) => { //pass through what the new keys will be

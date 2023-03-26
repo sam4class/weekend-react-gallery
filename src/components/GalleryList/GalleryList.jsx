@@ -18,9 +18,23 @@ function GalleryList({picture, getGallery}){
                 alert('Error in PUT', err);
             })
     }
+
+    //DELETE
+    const deleteButton = (id) =>{
+        console.log('Delete function', id);
+
+        axios.delete(`/gallery/delete/${id}`, id)
+        .then((response) => {
+            console.log('in delete client', response)
+            getGallery();
+        }).catch((err) => {
+            console.log('Error in DELETE', err);
+        })
+    }
+
         //first loop {picture} using map() 
         //looping through: it's grabing every picture's id, pic (grab the whole prop to be able to use all indexes), and the likes
-        //it's also adding a button and the sentence of clicked likes
+        //it's also adding a 'likes' button, 'delete' button and the sentence of clicked likes
         //no state is used in this componet because nothing needs to be saved at state, it can just be shown on the DOM
     return (<>
         <div id="picList">
@@ -29,7 +43,10 @@ function GalleryList({picture, getGallery}){
                 <br></br>
                 <button onClick={() => putLikesButton(pic.id)}>Click To Like</button>
                 <br></br>
+                <button onClick={() => deleteButton(pic.id)}>Delete</button>
                 <p>{pic.likes} people who liked this!</p>
+                <br></br>
+               
 
             </>
             ))}

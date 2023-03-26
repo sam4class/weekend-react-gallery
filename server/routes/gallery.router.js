@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
     const sqlText = `INSERT INTO "gallery" ("path", "description", "likes")
         VALUES ($1, $2, $3);`;
     
-   pool.query(sqlText, [newPicture.path, newPicture.discription, newPicture.likes])
+   pool.query(sqlText, [newPicture.path, newPicture.description, newPicture.likes])
    .then((result) => {
     res.sendStatus(201);
    }).catch ((err) => {
@@ -21,6 +21,20 @@ router.post('/', (req, res) => {
     res.sendStatus(500);
    })
 
+})
+
+//DELETE
+router.delete('/delete/:id', (req, res) => {
+    let reqId = req.params.id;
+    const sqlText = 'DELETE FROM "gallery" WHERE "id"= $1;';
+
+    pool.query(sqlText, [reqId])
+    .then((result) => {
+        res.sendStatus(200);
+    }).catch((err) => {
+        console.log('Error in server DELETE', err);
+        res.sendStatus(500);
+    })
 })
 
 // PUT Route
